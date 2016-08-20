@@ -1,1 +1,31 @@
 500px DevOps Coding Challenge
+
+- Ansible will be used to complete this challenge
+
+Req:
+
+- Ubuntu 14.04
+- check your solution into Github
+
+The Challenge:
+
+- A single instance of Roshi server 
+- A single instance of Redis server 
+- An HTTP proxy server in front of Roshi 
+
+Test the result:
+
+- roshi­server ­redis.instances=localhost:6379
+
+criteria must be met:  
+ 
+- Roshi server is running, and the process is supervised. 
+- Redis server is running, and the process is supervised. 
+- The proxy server is running, and the process is supervised. 
+- Roshi is accessible from any IP in the 172.31.32.x  subnet on  port 80 . It is not 
+accessible from any IP outside that subnet. 
+- The solution is idempotent and convergent. This means that it does everything it needs 
+to do on the first run, and it can be run over and over without consequence or race 
+conditions.
+
+
