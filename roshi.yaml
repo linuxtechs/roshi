@@ -2,7 +2,6 @@
 - hosts: servers
   remote_user: root
 
-
   vars:
     - destination: '/usr/share/go/src/pkg/github.com/soundcloud/roshi'
     - roshi_version: 'roshi'
