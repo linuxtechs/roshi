@@ -1,0 +1,66 @@
+---
+- hosts: servers
+  remote_user: root
+
+
+  vars:
+    - destination: '/usr/share/go/src/pkg/github.com/soundcloud/roshi'
+    - roshi_version: 'roshi'
+    - roshi_dir: '{{destination}}'
+    - GOPATH: '/usr/share/go/'
+
+  tasks:
+
+
+    - name: Create directories
+      file: path=/usr/share/go/{{item.0}}/{{item.1}}/{{item.2}}/{{item.3}}/{{item.4}} state=directory
+      with_nested:
+        - ['src']
+        - ['pkg']
+        - ['github.com']
+        - ['soundcloud']
+        - ['roshi']
+
+    - name: Cloning Roshi repos
+      git: repo=https://github.com/soundcloud/{{roshi_version}}.git
+           dest={{ item.dest }}
+      with_items:
+        -
+          dest: '{{ destination }}'
+
+
+    - name: Stat of Roshi
+      stat: path={{ roshi_dir }}/roshi-server/done
+      register: make_stat
+
+    - name: Build Roshi - make
+      environment:
+        GOPATH: '{{ GOPATH }}'
+      command: 'chdir={{ roshi_dir }}/roshi-server "{{ item }}"'
+      with_items:
+        - make
+      when: make_stat.stat.exists == False
+
+    - name: Stat of roshi-server
+      stat: path={{ roshi_dir }}/roshi-server/roshi-server
+      register: roshi_stat
+
+    - name: Move roshi-server
+      command: mv {{ roshi_dir }}/roshi-server/roshi-server /usr/local/bin
+      when: roshi_stat.stat.exists
+
+
+    - name: Build Roshi with make is done and registered for only once
+      shell: "echo done > {{ roshi_dir }}/roshi-server/done"
+      when: make_stat.stat.exists == False
+
+
+    - name: Stat of roshi-walker
+      stat: path={{ roshi_dir }}/roshi-walker/roshi-walker
+      register: walker_stat
+
+    - name: Move roshi-walker
+      command: mv {{ roshi_dir }}/roshi-walker/roshi-walker /usr/local/bin
+      when: walker_stat.stat.exists
+
+
