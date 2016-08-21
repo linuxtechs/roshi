@@ -61,6 +61,6 @@
 
     - name: Move roshi-walker
       command: mv {{ roshi_dir }}/roshi-walker/roshi-walker /usr/local/bin
-      when: walker_stat.stat.exists
+      when: walker_stat.stat.exists == False
 
 
