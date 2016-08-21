@@ -5,7 +5,6 @@
 
   tasks:
 
-
     - name: Remove by default allowed openssl application
       file: dest=/etc/ufw/applications.d/openssh-server state=absent
 
