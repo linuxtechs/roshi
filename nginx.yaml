@@ -1,0 +1,27 @@
+---
+- hosts: servers
+  remote_user: root
+
+  tasks:
+
+    - name: Remove Nginx default server file
+      file: dest=/etc/nginx/sites-enabled/default state=absent
+
+
+    - name: Stat of Nginx Config file
+      stat: path=/etc/nginx/sites-enabled/nginx-roshi.conf
+      register: conf_stat
+
+
+    - name: Create Nginx Config file
+      template: src="nginx-conf.j2"
+                dest="/etc/nginx/sites-enabled/nginx-roshi.conf"
+      when: conf_stat.stat.exists == False
+
+
+    - name: Restart Nginx
+      service: name=nginx state=restarted
+      when: conf_stat.stat.exists == False
+
+
+
