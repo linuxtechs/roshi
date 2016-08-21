@@ -14,7 +14,7 @@ The Challenge:
 
 Test the result:
 
-- roshi­server ­redis.instances=localhost:6379
+- roshi-server ­-redis.instances=localhost:6379
 
 criteria must be met:  
  
@@ -65,7 +65,7 @@ Install Steps:-
 
  - Start Roshi On the server side 'AWS' as roshi user or root
 
-       $ roshi­server ­redis.instances=localhost:6379
+       $ roshi-server ­-redis.instances=localhost:6379
 
 
  - Do some test
@@ -92,6 +92,7 @@ $ curl -Ss -d@select.json -XGET 'http://localhost:80' | jq .
 
 
  - Firewall Status
+
 	$ ufw status verbose
 	Status: active
 	Logging: on (low)
