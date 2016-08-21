@@ -1,0 +1,15 @@
+---
+- hosts: servers
+  remote_user: root
+
+
+  tasks:
+
+    - name: Allow SSH in UFW
+      ufw: rule=allow port=22 proto=tcp
+
+    - name: Allow port 80 for local subnet in UFW
+      ufw: rule=allow port=80 proto=tcp src=172.31.32.0/24
+
+    - name: Set firewall default policy
+      ufw: state=enabled policy=reject
