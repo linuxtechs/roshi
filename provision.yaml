@@ -1,0 +1,7 @@
+---
+- hosts: servers
+- include: users.yaml
+- include: requirements.yaml
+- include: roshi.yaml
+- include: nginx.yaml
+- include: ufw.yaml
