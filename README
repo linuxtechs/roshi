@@ -1,10 +1,10 @@
-500px DevOps Coding Challenge
 
- Ansible will be used to complete this challenge
+	500px DevOps Coding Challenge
+
+ 	Ansible will be used to complete this challenge.
 
 
 - Ubuntu 14.04
-- check your solution into Github
 
 The Challenge:
 
@@ -28,7 +28,7 @@ to do on the first run, and it can be run over and over without consequence or r
 conditions.
 
 
-Install:-
+Install Steps:-
 
  - Copy your user public key "~/.ssh/id_rsa.pub" to root authorized keys file "~/.ssh/authorized_keys" on the server side 'AWS'
 
@@ -68,7 +68,7 @@ Install:-
        $ roshi­server ­redis.instances=localhost:6379
 
 
-- Do some test
+ - Do some test
 
 	- Insert:
 
@@ -89,5 +89,17 @@ $ cat select.json
 ["Zm9r"]
 
 $ curl -Ss -d@select.json -XGET 'http://localhost:80' | jq .
+
+
+ - Firewall Status
+
+	$ ufw status
+	Status: active
+
+	To                         Action      From
+	--                         ------      ----
+	22/tcp                     ALLOW       Anywhere
+	80/tcp                     ALLOW       172.31.32.0/24
+22/tcp (v6)                ALLOW       Anywhere (v6)
 
 
