@@ -4,7 +4,7 @@ staging
 local
 
 [production]
-IP-Address nickname=production branch=master
+IP-Address nickname=production branch=master ansible_ssh_user=root
 
 [staging]
 #54.218.32.46 nickname=staging branch=develop ansible_ssh_user=root
