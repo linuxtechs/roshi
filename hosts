@@ -4,7 +4,7 @@ staging
 local
 
 [production]
-54.201.139.4 nickname=production branch=master ansible_ssh_user=root
+54.218.32.46 nickname=production branch=master ansible_ssh_user=root
 
 [staging]
 #ec2-54-191-46-99.us-west-2.compute.amazonaws.com nickname=staging branch=develop ansible_ssh_user=ubuntu

@@ -10,7 +10,7 @@
       apt: name=golang-go update_cache=yes state=latest
 
     - name: Install git
-      apt: name=unzip update_cache=yes state=latest
+      apt: name=git update_cache=yes state=latest
 
     - name: Install jq
       apt: name=jq update_cache=yes state=latest
