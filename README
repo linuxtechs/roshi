@@ -92,14 +92,17 @@ $ curl -Ss -d@select.json -XGET 'http://localhost:80' | jq .
 
 
  - Firewall Status
-
-	$ ufw status
+	$ ufw status verbose
 	Status: active
+	Logging: on (low)
+	Default: reject (incoming), allow (outgoing), disabled (routed)
+	New profiles: skip
 
 	To                         Action      From
 	--                         ------      ----
-	22/tcp                     ALLOW       Anywhere
-	80/tcp                     ALLOW       172.31.32.0/24
-	22/tcp (v6)                ALLOW       Anywhere (v6)
+	22/tcp                     ALLOW IN    Anywhere
+	80/tcp                     ALLOW IN    172.31.32.0/24
+	22/tcp (v6)                ALLOW IN    Anywhere (v6)
+
 
 

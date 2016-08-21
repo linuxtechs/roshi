@@ -41,6 +41,20 @@
         - make
       when: make_stat.stat.exists == False
 
+
+    - name: Stat of Roshi-Walker
+      stat: path={{ roshi_dir }}/roshi-walker/walkerdone
+      register: walkermake_stat
+
+    - name: Build Roshi-Walker - make
+      environment:
+        GOPATH: '{{ GOPATH }}'
+      command: 'chdir={{ roshi_dir }}/roshi-walker "{{ item }}"'
+      with_items:
+        - make
+      when: walkermake_stat.stat.exists == False
+
+
     - name: Stat of roshi-server
       stat: path={{ roshi_dir }}/roshi-server/roshi-server
       register: roshi_stat
@@ -61,6 +75,6 @@
 
     - name: Move roshi-walker
       command: mv {{ roshi_dir }}/roshi-walker/roshi-walker /usr/local/bin
-      when: walker_stat.stat.exists == False
+      when: walker_stat.stat.exists
 
 
