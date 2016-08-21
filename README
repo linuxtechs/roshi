@@ -68,3 +68,26 @@ Install:-
        $ roshi­server ­redis.instances=localhost:6379
 
 
+- Do some test
+
+	- Insert:
+
+POST to /. Provide a request body with a JSON array of key-score-member objects.
+
+$ cat insert.json
+[{"key":"Zm9r", "score":1.55, "member":"rks6"},
+ {"key":"Zm9r", "score":1.99, "member":"rks7"}]
+
+
+$ curl -Ss -d@insert.json -XPOST 'http://localhost:80' | jq .
+
+
+	- Select:
+
+
+$ cat select.json
+["Zm9r"]
+
+$ curl -Ss -d@select.json -XGET 'http://localhost:80' | jq .
+
+
