@@ -100,6 +100,6 @@ $ curl -Ss -d@select.json -XGET 'http://localhost:80' | jq .
 	--                         ------      ----
 	22/tcp                     ALLOW       Anywhere
 	80/tcp                     ALLOW       172.31.32.0/24
-22/tcp (v6)                ALLOW       Anywhere (v6)
+	22/tcp (v6)                ALLOW       Anywhere (v6)
 
 
