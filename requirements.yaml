@@ -1,0 +1,36 @@
+---
+- hosts: servers
+  remote_user: root
+  
+  tasks:
+    - name: Install make
+      apt: name=make update_cache=yes state=latest
+
+    - name: Install golang-go
+      apt: name=golang-go update_cache=yes state=latest
+
+    - name: Install git
+      apt: name=unzip update_cache=yes state=latest
+
+    - name: Install jq
+      apt: name=jq update_cache=yes state=latest
+
+    - name: Install redis-server
+      apt: name=redis-server update_cache=yes state=latest
+
+    #- name: Add Nginx PPA
+    #  apt_repository: repo="ppa:nginx/stable" update_cache=yes
+
+    - name: Install nginx
+      apt: name=nginx update_cache=yes state=latest
+
+    - name: Make sure redis-server is working
+      service: name=redis-server state=started
+      become: yes
+      become_method: sudo
+      remote_user: redis
+
+    - name: Install redis-tools
+      apt: name=redis-tools update_cache=yes state=latest
+
+

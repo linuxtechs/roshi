@@ -1,8 +1,7 @@
 500px DevOps Coding Challenge
 
-- Ansible will be used to complete this challenge
+ Ansible will be used to complete this challenge
 
-Req:
 
 - Ubuntu 14.04
 - check your solution into Github
@@ -27,5 +26,45 @@ accessible from any IP outside that subnet.
 - The solution is idempotent and convergent. This means that it does everything it needs 
 to do on the first run, and it can be run over and over without consequence or race 
 conditions.
+
+
+Install:-
+
+ - Copy your user public key "~/.ssh/id_rsa.pub" to root authorized keys file "~/.ssh/authorized_keys" on the server side 'AWS'
+
+ - Make sure you can login without password
+
+       $ ssh root@YOUR-AWS.compute.amazonaws.com
+
+ - Install ansible on your machine
+
+	First, add the PPA using the apt-add-repository command.
+	$ sudo apt-add-repository ppa:ansible/ansible
+
+	Once that has finished, update the apt cache.
+	$ sudo apt-get update
+
+	Finally, install Ansible.
+	$ sudo apt-get install ansible
+
+ - Install Git
+
+       $ sudo apt-get install git
+
+ - Clone 500px repo
+
+       $ git clone https://github.com/rkhshan/500px.git
+
+ - Change host IP address for production with AWS IP "YOUR-AWS.compute.amazonaws.com"
+
+      $ vi hosts
+
+ - Run the ansible.sh file
+
+       $ ./ansible.sh
+
+ - Start Roshi On the server side 'AWS' as roshi user or root
+
+       $ roshi­server ­redis.instances=localhost:6379
 
 
