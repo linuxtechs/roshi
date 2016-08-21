@@ -1,0 +1,14 @@
+---
+- hosts: servers
+  remote_user: root
+  
+
+  tasks:
+    - name: Create a Group
+      group: name=roshi
+             state=present
+
+    - name: Create a User
+      user: name=roshi
+            state=present
+            comment="Roshi"
