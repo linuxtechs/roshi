@@ -65,7 +65,7 @@ Install Steps:-
 
  - Start Roshi On the server side 'AWS' as roshi user or root
 
-       $ roshi-server -redis.instances=localhost:6379
+       $ roshi-server -redis.instances=localhost:6379 &
 
 
  - Do some test
