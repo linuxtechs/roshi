@@ -5,12 +5,16 @@
 
   tasks:
 
+
     - name: Remove by default allowed openssl application
       file: dest=/etc/ufw/applications.d/openssh-server state=absent
 
-
     - name: Remove by default allowed Nginx application
       file: dest=/etc/ufw/applications.d/nginx state=absent
+
+    - name: Remove by default allowed applications
+      shell: rm -rf /etc/ufw/applications.d/*
+
     - name: Allow SSH in UFW
       ufw: rule=allow port=22 proto=tcp
 
@@ -19,5 +23,4 @@
 
     - name: Set firewall default policy
       ufw: state=enabled policy=reject
-
 
