@@ -63,7 +63,7 @@ Install Steps:-
 
        $ ./ansible.sh
 
- - Start Roshi On the server side 'AWS' as roshi user or root
+ - Start Roshi On the server side 'AWS' as roshi user
 
        $ roshi-server -redis.instances=localhost:6379 &
 
