@@ -67,6 +67,11 @@
       shell: "echo done > {{ roshi_dir }}/roshi-server/done"
       when: make_stat.stat.exists == False
 
+    - name: Build Roshi-walker with make is done and registered for only once
+      shell: "echo done > {{ roshi_dir }}/roshi-walker/walkerdone"
+      when: walkermake_stat.stat.exists == False
+
+
 
     - name: Stat of roshi-walker
       stat: path={{ roshi_dir }}/roshi-walker/roshi-walker
