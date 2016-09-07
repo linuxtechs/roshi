@@ -50,7 +50,7 @@ Install Steps:-
 
  - Clone 500px repo
 
-       $ git clone https://github.com/rkhshan/500px.git
+       $ git clone https://github.com/rkhshan/roshi.git
 
  - Change host IP address for production with AWS IP "YOUR-AWS.compute.amazonaws.com"
 
