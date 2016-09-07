@@ -2,9 +2,6 @@
 
 
 - Ubuntu 14.04
-
-The Challenge:
-
 - A single instance of Roshi server 
 - A single instance of Redis server 
 - An HTTP proxy server in front of Roshi 
